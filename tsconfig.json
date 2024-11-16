@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES6",               // Or whichever version you want to target
+    "module": "CommonJS",          // CommonJS for compatibility with Node.js
+    "outDir": "./dist",            // Output directory for compiled files
+    "rootDir": "./src",            // Root directory where your .ts files are located
+    "strict": true                 // Optional: enable strict mode for better type checking
+  },
+  "include": [
+    "src/**/*"                     // Include all .ts files in the 'src' folder
+  ],
+  "exclude": [
+    "node_modules"                 // Exclude 'node_modules' folder
+  ]
+}
