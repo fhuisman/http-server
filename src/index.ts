@@ -27,7 +27,7 @@ const handleNotFound = (res: ServerResponse) => {
   res.write(JSON.stringify({ error: 'Not found.' }));
 };
 
-const server = createServer((req: IncomingMessage, res: ServerResponse) => {
+const handleRequest = (req: IncomingMessage, res: ServerResponse) => {
 
   if (req.method === 'GET' && req.url === '/ok') {
     handleOkRequest(res);
@@ -37,8 +37,13 @@ const server = createServer((req: IncomingMessage, res: ServerResponse) => {
     handleNotFound(res);
   }
   res.end();
-});
+};
 
-server.listen(3000, () => {
-  console.log('Server running on port 3000');
-});
+export const createHttpServer = () => createServer(handleRequest);
+
+if (require.main === module) {
+  const server = createHttpServer();
+  server.listen(3000, () => {
+    console.log('Server running on port 3000');
+  });
+}
